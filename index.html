@@ -1,0 +1,52 @@
+<DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <title>Vue Calculator</title>
+            <link rel="stylesheet" href="css/main.css">
+        </head>
+        <body>
+    
+            <div class="calc" id="calc-view">
+                <div class="calc-display">{{ displayVal }}</div>
+                <div v-on:click="calc.clear()" class="calc-btn">C</div>
+                <div v-on:click="calc.invertVal()" class="calc-btn">±</div>
+                <div v-on:click="calc.toPercent()" class="calc-btn">%</div>
+                <div v-on:click="calc.divide()" class="calc-btn calc-op">÷</div>
+                <div v-on:click="calc.append(7)" class="calc-btn">7</div>
+                <div v-on:click="calc.append(8)" class="calc-btn">8</div>
+                <div v-on:click="calc.append(9)" class="calc-btn">9</div>
+                <div v-on:click="calc.multiply()" class="calc-btn calc-op">x</div>   
+                <div v-on:click="calc.append(4)" class="calc-btn">4</div>
+                <div v-on:click="calc.append(5)" class="calc-btn">5</div>
+                <div v-on:click="calc.append(6)" class="calc-btn">6</div>
+                <div v-on:click="calc.subtract()" class="calc-btn calc-op">-</div>   
+                <div v-on:click="calc.append(1)" class="calc-btn">1</div>
+                <div v-on:click="calc.append(2)" class="calc-btn">2</div>
+                <div v-on:click="calc.append(3)" class="calc-btn">3</div>
+                <div v-on:click="calc.add()" class="calc-btn calc-op">+</div>
+                <div v-on:click="calc.append(0)" class="calc-btn calc-zero">0</div>
+                <div v-on:click="calc.appendDot()" class="calc-btn">.</div>
+                <div v-on:click="calc.getResult()" class="calc-btn calc-op">=</div>
+            </div>
+    
+            <script src="https://cdn.jsdelivr.net/npm/vue" charset="utf-8"></script>
+            <script src="js/Calc.js" charset="utf-8"></script>
+    
+            <script type="text/javascript">
+
+                let calc = new Calc();
+
+                let calcVue = new Vue({
+                    el: "#calc-view",
+                    data: calc,
+                    computed: {
+                        displayVal: function(){
+                            return this.currentVal ? this.currentVal : "0";
+                        }
+                    }
+                });
+    
+            </script>
+        </body>
+    </html>
